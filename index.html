@@ -17,7 +17,7 @@
         <!-- full name -->
 		<div class="col-md-12">
 			<label for="full-name" class="form-label">Full name</label>
-			<input type="text" class="form-control" id="full-name" required autocomplete="off">
+			<input type="text" class="form-control" id="full-name" required autocomplete="off" onkeyup="validate()">
 			<div class="valid-feedback" id="full-name-valid">
 				Looks good!
 			</div>
@@ -29,7 +29,7 @@
         <!-- Gender -->
         <div class="col-md-12">
 			<label for="gender" class="form-label">Gender</label>
-            <select class="form-select" id="gender" required>
+            <select class="form-select" id="gender" required onchange="validate()">
                 <option value="None" selected></option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -48,20 +48,20 @@
         </div>
         <div class="col-12">
             <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input"id="exampleCheck1" required>
-                <label class="form-check-label"for="exampleCheck1">Swimming</label>
+                <input type="checkbox" class="form-check-input" onkeyup="validate()" id="exampleCheck1" required onchange="validate()">
+                <label class="form-check-label" aria-valuetext="text" id="hobbie-1" for="exampleCheck1">Swimming</label>
             </div>
             <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input"id="exampleCheck1" required>
-                <label class="form-check-label"for="exampleCheck1">Reading novels</label>
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" required onchange="validate()">
+                <label class="form-check-label" id="hobbie-2" for="exampleCheck1">Reading novels</label>
             </div>
             <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input"id="exampleCheck1" required>
-                <label class="form-check-label"for="exampleCheck1">Dancing</label>
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" required onchange="validate()">
+                <label class="form-check-label" id="hobbie-3" for="exampleCheck1">Dancing</label>
             </div>
             <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input"id="exampleCheck1" required>
-                <label class="form-check-label"for="exampleCheck1">Singing</label>
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" required onchange="validate()">
+                <label class="form-check-label" id="hobbie-4" for="exampleCheck1">Singing</label>
             </div>
             <div class="valid-feedback" id="hobbies-valid">
                 Looks good!
@@ -73,7 +73,7 @@
 
 		<!-- submit button -->
 		<div class="col-12" style="text-align: center;">
-			<button class="btn btn-dark" type="button" onclick="validate()">Submit form</button>
+			<button class="btn btn-dark" type="button" onclick="validate(true)">Submit form</button>
 		</div>
 
 	</form>

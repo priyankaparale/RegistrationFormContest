@@ -1,49 +1,68 @@
-function validate() {
+let globalIsSubmitted = false 
+
+function validate(isSubmitted = false) {
 	let fullName = document.getElementById('full-name').value
 	let gender = document.getElementById('gender').value
 	let hobbies = document.getElementById('exampleCheck1').checked
 	let error = false
+    var hobby = document.forms[0]
+    var str = ''
+    for (let i=0; i<hobby.length; i++){
+        if(hobby[i].checked){
+           str = str + hobby[i].value + 'and'
+        }
+    }
     console.log(fullName, gender, hobbies)
 
-	if(fullName.length >= 5) {
-		document.getElementById('full-name-valid').style.display = 'block'
-		document.getElementById('full-name-invalid').style.display = 'none'
-	} else {
-		document.getElementById('full-name-invalid').style.display = 'block'
-		document.getElementById('full-name-valid').style.display = 'none'
-		error = true
+    if(isSubmitted) {``
+		globalIsSubmitted = true
 	}
 
-	if(gender != 'None') {
-		document.getElementById('gender-valid').style.display = 'block'
-		document.getElementById('gender-invalid').style.display = 'none'
-	} else {
-		document.getElementById('gender-invalid').style.display = 'block'
-		document.getElementById('gender-valid').style.display = 'none'
-		error = true
-	}
+    if(globalIsSubmitted) {
+        if(fullName.length >= 5) {
+            document.getElementById('full-name-valid').style.display = 'block'
+            document.getElementById('full-name-invalid').style.display = 'none'
+        } else {
+            document.getElementById('full-name-invalid').style.display = 'block'
+            document.getElementById('full-name-valid').style.display = 'none'
+            error = true
+        }
 
-	if(hobbies) {
-		document.getElementById('hobbies-invalid').style.display = 'none'
-	} else {
-		document.getElementById('hobbies-invalid').style.display = 'block'
-		error = true
-	}
+        if(gender != 'None') {
+            document.getElementById('gender-valid').style.display = 'block'
+            document.getElementById('gender-invalid').style.display = 'none'
+        } else {
+            document.getElementById('gender-invalid').style.display = 'block'
+            document.getElementById('gender-valid').style.display = 'none'
+            error = true
+        }
 
-	if(!error) {
-		// alert('Your details have been saved successfully!')
-        alert('Hobbies of $[fullName] ($[gender]) are ')
+        if(str != '') {
+            document.getElementById('hobbies-invalid').style.display = 'none'
+            document.getElementById('hobbies-valid').style.display = 'block'
+        } else {
+            document.getElementById('hobbies-invalid').style.display = 'block'
+            document.getElementById('hobbies-valid').style.display = 'none'
+            error = true
+        }
 
-		document.getElementById('registration-form').reset()
+        if(!error && isSubmitted) {
+            // alert('Your details have been saved successfully!')
+            // alert('Hobbies of $[fullName] ($[gender]) are '
+            const msg = `Hobbies of ${fullName} (${gender}) are ${str}.`
+            alert(msg)
 
-		let validFeedbacks = document.getElementsByClassName('valid-feedback')
-		for(let i = 0; i < validFeedbacks.length; i++) {
-			validFeedbacks[i].style.display = 'none'
-		}
-		let invalidFeedbacks = document.getElementsByClassName('invalid-feedback')
-		for(let i = 0; i < invalidFeedbacks.length; i++) {
-			invalidFeedbacks[i].style.display = 'none'
-		}
-	}
+            document.getElementById('registration-form').reset()
+
+            let validFeedbacks = document.getElementsByClassName('valid-feedback')
+            for(let i = 0; i < validFeedbacks.length; i++) {
+                validFeedbacks[i].style.display = 'none'
+            }
+            let invalidFeedbacks = document.getElementsByClassName('invalid-feedback')
+            for(let i = 0; i < invalidFeedbacks.length; i++) {
+                invalidFeedbacks[i].style.display = 'none'
+            }
+        }
+    }
 } 
 console.log('priyanka')
