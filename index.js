@@ -7,11 +7,10 @@ function validate(isSubmitted = false) {
 	let error = false
 
     var hobby = document.forms[0]
-    var str = ""
+    var get_Hobbies = ""
     for (let i=0; i<hobby.length; i++){
         if(hobby[i].checked){
-           str = str + hobby[i].value + ' and '
-        //    hobbies = str + " and "
+           get_Hobbies = get_Hobbies + hobby[i].value + " and "
         }
     }
     // console.log(str)
@@ -40,7 +39,7 @@ function validate(isSubmitted = false) {
             error = true
         }
 
-        if(str != "") {
+        if(get_Hobbies != "") {
             document.getElementById('hobbies-invalid').style.display = 'none'
             document.getElementById('hobbies-valid').style.display = 'block'
         } else {
@@ -50,7 +49,7 @@ function validate(isSubmitted = false) {
         }
 
         if(!error && isSubmitted) {
-            const msg = `Hobbies of ${fullName} (${gender}) are ${str}.`
+            const msg = `Hobbies of ${fullName} (${gender}) are ${get_Hobbies}.`
             alert(msg)
 
             document.getElementById('registration-form').reset()
