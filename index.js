@@ -3,16 +3,19 @@ let globalIsSubmitted = false
 function validate(isSubmitted = false) {
 	let fullName = document.getElementById('full-name').value
 	let gender = document.getElementById('gender').value
-	let hobbies = document.getElementById('exampleCheck1').checked
+	// let hobbies = document.getElementById('hobbies').checked
 	let error = false
+
     var hobby = document.forms[0]
-    var str = ''
+    var str = ""
     for (let i=0; i<hobby.length; i++){
         if(hobby[i].checked){
-           str = str + hobby[i].value + 'and'
+           str = str + hobby[i].value + ' and '
+        //    hobbies = str + " and "
         }
     }
-    console.log(fullName, gender, hobbies)
+    // console.log(str)
+    // console.log(fullName, gender, hobbies)
 
     if(isSubmitted) {``
 		globalIsSubmitted = true
@@ -37,7 +40,7 @@ function validate(isSubmitted = false) {
             error = true
         }
 
-        if(str != '') {
+        if(str != "") {
             document.getElementById('hobbies-invalid').style.display = 'none'
             document.getElementById('hobbies-valid').style.display = 'block'
         } else {
@@ -47,8 +50,6 @@ function validate(isSubmitted = false) {
         }
 
         if(!error && isSubmitted) {
-            // alert('Your details have been saved successfully!')
-            // alert('Hobbies of $[fullName] ($[gender]) are '
             const msg = `Hobbies of ${fullName} (${gender}) are ${str}.`
             alert(msg)
 
